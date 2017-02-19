@@ -1,0 +1,47 @@
+<ion-view title="Payment">
+  
+  <ion-content class="padding">
+    <button class="button button-block button-positive" ng-click="openPartialPayment()">
+      Make Partial Payment
+    </button>
+    <div class="item item-icon-right">
+      <p>Invoice No {{payment.invoice}}</p>
+      <button class="icon ion-ios-settings" ng-click="popoverOptions($event)"></button>
+    </div>
+
+    <div class="item item-icon-right">
+      <p>Customer {{payment.customer.name}}</p>
+      <button class="icon ion-ios-telephone-outline" ></button>
+    </div>
+
+    <div class="item">
+      <p>Bill Date {{payment.dt_invoice | date}}</p>
+    </div>
+    
+    <div class="item">
+      <p>Due Date {{payment.dt_due | date}}</p>
+    </div>
+
+    <div class="item">
+      <p>Received : {{payment.received}}</p>
+    </div>
+
+    <div class="item">
+      <h5> Amount : {{payment.amount}} </h5>
+      <p> Remaining Balance {{balance}}</p>
+    </div>
+    <hr/>
+
+    <div class="list">
+      <div class="item item-divider" ng-repeat="action in payment.event_log">
+        <p>Type : {{action.event}}</p>
+        <p>Comment : {{action.comment}}</p>
+        <p>Date : {{action.date}} </p>
+        <span ng-if="action.amount != undefined">
+          <p>Amount: {{action.amount}}</p>
+        </span>
+      </div>
+    </div>
+    <hr>
+  </ion-content>
+</ion-view>

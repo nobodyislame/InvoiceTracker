@@ -1,0 +1,148 @@
+<ion-view title="{{pagetitle}}">
+	<ion-content>
+		
+		<form name="paymentForm">
+			<div class="list">
+			  <label class="item item-input">
+			  	<span class="input-label">Customer</span>
+			    <input type="text" 
+			    		ng-if = "!show_cust_list"  
+			    		ng-model="tmpItem.customer.name" 
+			    		ng-disabled="!newItem || custId>0">
+			    <select ng-if="show_cust_list"
+			    		ng-options = "customer as customer.name for customer in customers"
+			    		ng-model="selected_customer" 
+			    		ng-change="onCustomerSelect(selected_customer)"
+			    		placeholder="Select customer">
+			    </select>
+			  </label>
+
+			  <div class = "row">
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Customer ID (*)</span>
+			        <input type="number" ng-model="tmpItem.customerId" required>
+			      </label>
+			    </div>
+
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Name</span>
+			        <input type="text" ng-model="tmpItem.customer.name" >
+			      </label>
+			    </div>
+			  </div>
+
+			   <div class = "row">
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Phone1 (*)</span>
+			        <input type="number" ng-model="tmpItem.customer.phone1" required>
+			      </label>
+			    </div>
+
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Email</span>
+			        <input type="email" ng-model="tmpItem.customer.email" >
+			      </label>
+			    </div>
+			  </div>  
+
+			  <div class = "row">
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Invoiced</span>
+			        <ion-list>
+	  					<ion-radio ng-model="tmpItem.invoiced" ng-value="true">Yes</ion-radio>
+	  					<ion-radio ng-model="tmpItem.invoiced" ng-value="false">No</ion-radio>
+					</ion-list>>
+			      </label>
+			    </div>
+
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Invoice (*)</span>
+			        <input type="text" ng-model="tmpItem.invoice" required>
+			      </label>
+			    </div>
+			  </div>
+
+			  <label class="item item-input">
+		        <span class="input-label">Description</span>
+		        <input type="text" ng-model="tmpItem.description">
+			  </label>
+
+			  <div class = "row">
+			    <div class = "col col-50"> 
+			      <label class="item item-input">
+			        <span class="input-label">Amount (*)</span>
+			        <input type="number" ng-model="tmpItem.amount" required>
+			      </label>
+			    </div>
+
+			    <div class = "col col-50"> 
+			       <label class="item item-input">
+			  			<span class="input-label">Currency</span>
+
+			  			<input type="text" 
+			    			ng-if = "!newItem"  
+			    			ng-model="tmpItem.currency" 
+			    			ng-disabled="!newItem || custId>0">
+
+			    		<select ng-options = "currency as currency.name for currency in currencies"
+			    				ng-model="selected_currency" 
+			    				ng-change="selectCurrency(selected_currency)"
+			    				ng-if="newItem">
+			    			{{currency}}
+			    		</select>
+			  		</label>
+				</div>
+			  </div>
+
+			  <label class="item item-input">
+	  			<span class="input-label">Invoice Date (*)</span>
+	  			<input type="date" ng-model = "tmpItem.dt_invoice" ng-change="addDays()" ng-disabled="!newItem" required>
+			  </label>
+
+			  <label class="item item-input">
+	  			<span class="input-label">Due Date</span>
+	  			<input type="date" ng-model = "tmpItem.dt_due">
+			  </label>
+
+			  <label class="item item-input">
+	  			<span class="input-label">Next Follow Up Date</span>
+	  			<input type="date" ng-model = "tmpItem.dt_next_follow_up" > 
+			  </label>
+
+			   <label class="item item-input">
+	  			<span class="input-label">Received Date</span>
+	  			<input type="date" ng-model = "tmpItem.dt_received" > 
+			  </label>
+
+			  <label class="item item-input">
+			  	<span class="input-label">Status</span>
+			  		<input type="text" 
+			    		ng-if = "!newItem"  
+			    		ng-model="tmpItem.status" 
+			    		ng-disabled="!newItem || custId>0">
+
+			    	<select ng-options = "status as status.name for status in statuses"
+			    			ng-if = "newItem"
+			    			ng-model="selected_status" 
+			    			ng-change="selectStatus(selected_status)">
+			    	</select>
+			  </label>
+			</div>
+			<span ng-show="error">Fields marked (*) are required</span>
+		</form>	
+
+		<button class="button button-block button-positive" ng-click="save(paymentForm)" ng-disbaled="paymentForm.$invalid">
+			Save
+		</button>
+		<button class="button button-block button-assertive" ng-click="cancel()">
+      		Cancel
+    	</button>
+	
+	</ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-view title="Customer">
+	<ion-content>
+		<div class="item item-thumbnail-left">
+      		<img src="{{customer.image}}" />
+      		<h2>Customer ID: {{customer.id}}</h2>
+      		<p>Name : {{customer.name}}</p>
+          <p>Phone : {{customer.phone1}}</p>
+          <p>Type : {{customer.type}}</p>
+    </div>
+    <button class="button button-block button-assertive" ng-click="confirm()">
+      Delete Customer
+    </button>
+    <div class="button-bar">
+  			<a class="button button-positive" ng-disabled="true">B1</a>
+  			<a class="button button-positive" ng-disabled="true">B2</a>
+  			<a class="button button-positive" href="#/app/editpayment/New/0/{{customer.id}}">B3</a>
+  			<a class="button button-positive" href="#/app/editcustomer/edit/{{customer.id}}">B4</a>
+		</div>
+    <hr>
+
+    <div class="card text-center">
+      <div class="item item-text-wrap">
+        Payment History
+      </div>
+    </div>
+
+    <div class="list">
+      <div class="item item-divider" ng-repeat = "payment in payments">
+        <h3> Payment ID {{payment.id}} </h3>
+        <p>Amount {{payment.amount}}</p>
+        <p>Invoice Date{{payment.dt_invoice | date}}</p>
+        <p>Due Date {{payment.dt_due | date}}</p>
+        <p>Follow Up Date {{payment.dt_next_follow_up | date}}</p>
+        <p>Status {{payment.status}}</p>
+      </div>
+    </div>
+	</ion-content>
+</ion-view>

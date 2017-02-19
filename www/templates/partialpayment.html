@@ -1,0 +1,28 @@
+<ion-modal-view>
+	<ion-content>
+		<form name="partialPaymentForm">
+			<label class="item item-input">
+    			<textarea placeholder="Comment" cols="40" rows="5" ng-model="tmpObj.comment"></textarea>
+  			</label>
+		
+  			<label class="item item-input">
+	  			<span class="input-label">Partial Payment Amount (*)</span>
+	  			<input type="number" ng-model = "tmpObj.partial_payment_amount" required>
+			</label>
+
+			<label class="item item-input">
+	  			<span class="input-label">Partial Payment Date (*)</span>
+	  			<input type="date" ng-model = "tmpObj.dt_partial_payment" required>
+			</label>
+			<span ng-show="error">
+				Fields marked (*) are required
+			</span>
+		</form>
+
+		<button class="button button-block button-positive" 
+				ng-click="updatePartialPayment(partialPaymentForm)">
+			Submit
+		</button>
+		<button class="button button-block button-assertive" ng-click="closePartialPayment()">Cancel</button>
+	</ion-content>
+</ion-modal-view>

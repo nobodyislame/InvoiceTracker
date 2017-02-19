@@ -1,0 +1,38 @@
+<ion-modal-view>
+	<ion-content>
+		<form name="receivedForm">
+			<div class="card">
+				<div class="item">
+					Exisiting balance {{balance}}
+				</div>
+			</div>
+
+			<label class="item item-input">
+    			<textarea placeholder="Comment" cols="40" rows="5" ng-model="tmpObj.comment"></textarea>
+  			</label>
+		
+			<label class="item item-input">
+	  			<span class="input-label">Received Date (*)</span> 
+	  			<input type="date" ng-model = "tmpObj.dt_received" required>
+			</label>
+
+			<label class="item item-input">
+	  			<span class="input-label">Received Amount (*)</span>
+	  			<input type="number" ng-model = "tmpObj.amount" ng-change = "confirmAmount()" required>
+			</label>
+
+			<span ng-show="amountError">
+				Entered amount does not match current balance.
+			</span>
+			<span ng-show = "error">
+				Fields marked (*) are required
+			</span>
+		</form>
+
+		<button class="button button-block button-positive" 
+				ng-click="updateReceived(receivedForm)">
+			Submit
+		</button>
+		<button class="button button-block button-assertive" ng-click="closePaymentReceived()">Cancel</button>
+	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,23 @@
+<ion-modal-view>
+	<ion-content>
+		
+	<form name=followUpForm>
+		<label class="item item-input">
+    		<textarea placeholder="Comment" cols="40" rows="5" ng-model="tmpObj.comment"></textarea>
+  		</label>
+		
+		<label class="item item-input">
+  			<span class="input-label">Next Follow Up Date (*)</span>
+  			<input 	type="date" 
+  					ng-model="tmpObj.dt_next_follow_up"
+  					required />
+		</label>
+		<span ng-show="error">
+			Fields marked (*) are required
+		</span>
+	</form>
+			
+	<button class="button button-block button-positive" ng-click="updateFollowUp(followUpForm)">Submit</button>
+	<button class="button button-block button-assertive" ng-click="closeFollowUp()">Cancel</button>
+	</ion-content>
+</ion-modal-view>

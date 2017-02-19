@@ -1,0 +1,37 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <div class="button-bar">
+  		<a class="button button-positive" href="#/app/payments">First</a>
+  		<a class="button button-positive" href="#/app/payments">Second</a>
+ 		<a class="button button-positive" href="#/app/payments">Third</a>
+	</div>
+	<br>
+	<button class="button button-block button-positive" ui-sref="app.selectcustomer">
+		Create Bill 
+	</button>
+	<div class="card">
+		<div class="item item-divider text-center">
+			Follow Ups Today 	
+		</div>
+		<div class="item item-text-wrap" ng-repeat = "followup in followups">
+			<p> ID {{followup.id}} </p>
+			<p> Description {{followup.description}}</p>
+			<p> Invoice Date {{followup.dt_invoice}}</p>
+			<p> Amount {{followup.amount}}</p>
+			<p> Customer Name {{followup.customer.name}}</p>
+			<p> Phone {{followup.customer.phone1}}</p>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider text-center">
+			Status of the payments	
+		</div>
+		<div class="item item-text-wrap" ng-repeat = "payment in payments">
+			<p> Payment ID {{payment.id}} </p>
+			<p> Customer Name {{payment.customer.name}}</p>
+			<p> Status {{payment.status}}</p>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

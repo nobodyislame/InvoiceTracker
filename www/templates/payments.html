@@ -1,0 +1,25 @@
+<ion-view view-title="Payments">
+  <ion-content>
+	  <div class="col col-100 text-center">
+		 <select ng-options = "filter as filter.name for filter in filters"
+			     ng-model="selected_filter" 
+			     ng-change="selectFilter(selected_filter)">
+		</select>
+	  </div>
+	  <a href="#/app/editpayment/New/0/0">
+	  	<button class="button button-block button-positive">
+	  		Add Payment
+	  	</button>
+	  </a>
+	   <div ng-repeat="payment in payments | filter: current_filter.name">
+	    <a class="item item-avatar" href="#/app/payment/{{payment.id}}">
+		    <h3>Payment ID : {{payment.id}}</h3>
+		    <p>Created On : {{payment.created | date}}</p>
+		    <p>Customer Name : {{payment.customer.name}}</p>
+		    <p>Service used: {{payment.description}}</p>
+		    <p>Payment Status : {{payment.status}}</p>
+		</a>
+		<button class="button button-small button-assertive text-right" ng-click="confirm(payment.id)">Delete</button>
+  	</div>
+  </ion-content>
+</ion-view>

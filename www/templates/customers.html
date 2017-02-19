@@ -1,0 +1,29 @@
+<ion-view view-title="Customers">
+  <ion-content>
+ 	<div class="bar bar-header item-input-inset">
+	  <label class="item-input-wrapper">
+	    <i class="icon ion-ios-search placeholder-icon"></i>
+	    <input type="search" placeholder="Search Customers" ng-model="search">
+	  </label>
+	</div>
+	<a href="#/app/editcustomer/New/0">
+		<button class="button button-block button-positive">
+			Add Customer
+		</button>
+	</a>
+    <a class="item item-avatar" href="#/app/customer/{{customer.id}}" ng-repeat="customer in customers | filter : search">
+	    <img src="{{customer.image}}">
+	    <h3>ID {{customer.id}}</h3>
+	    <p>Created on {{customer.created | date}}</p>
+	    <p>Last Modified on {{customer.modified | date}}</p>
+	    <p>Name {{customer.name}}</p>
+	    <p>Phone {{customer.phone1}}</p>
+	</a>
+	<a href="#/app/payments">
+		<button class="button button-positive button-block">
+  			Go to payments
+		</button>
+	</a>
+  	</div>
+  </ion-content>
+</ion-view>

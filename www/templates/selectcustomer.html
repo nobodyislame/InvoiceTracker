@@ -1,0 +1,22 @@
+<ion-view>
+	<ion-content>
+		<button class="button button-block button-positive"
+				ui-sref="app.editcustomer({mode : 'New', id: 0})">
+			Create New
+		</button>
+		<br>
+		<h3 class="text-center"> Select From Below </h3>
+		<label class="item item-input">
+   			<input type="text" placeholder="Search" ng-model="search">
+  		</label>
+		<br>
+		<div class="list">
+			<div class="item item-divider" 
+				 ng-repeat="customer in customers | filter : search"
+				 ui-sref="app.editpayment({mode : 'New', payid : 0, custid : {{customer.id}} })">
+				<h4> Customer </h4>
+				<p>{{customer.name}}</p>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
